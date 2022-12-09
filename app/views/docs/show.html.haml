@@ -1,0 +1,9 @@
+.wrapper_with_padding
+  #doc_show
+    %h1.title= @doc.title
+    %p= simple_format(@doc.content)
+
+    .buttons
+      = link_to "Powrot", docs_path, class: "button"
+      = link_to "Edytuj", edit_doc_path(@doc), class: "button"
+      = link_to "Usun", doc_path(@doc), method: :delete, data: { confirm: "jestes pewien?" }, class: "button"

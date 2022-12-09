@@ -1,0 +1,13 @@
+.wrapper_with_padding
+  #docs.clearfix
+    - unless @docs.blank?
+      - @docs.each do |doc|
+        %a{ href: (url_for [doc]) }
+          .doc
+            %p.title= doc.title
+            %p.date= time_ago_in_words(doc.created_at)
+            %p.content= truncate(doc.content, lenght:50)
+    - else
+      %h2 Stwórz dokument!
+      %p Zacznij porządkować swoje życie już dziś. 
+      %button= link_to "Nowy dokument", new_doc_path

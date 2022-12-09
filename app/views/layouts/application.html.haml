@@ -1,0 +1,26 @@
+!!!
+%html
+%head 
+  %title Docs Add
+  = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track'=> true
+  = javascript_pack_tag 'application', 'data-turbolinks-track' => true
+  = csp_meta_tag
+%body 
+  %header 
+    .header_inner
+      = link_to "Docs_Add", root_path, id: "logo"
+
+      %nav 
+        - if user_signed_in?
+          = link_to "Stwórz dokument", new_doc_path 
+          = link_to "Wyloguj", destroy_user_session_path, method: :delete
+        
+        - else
+          = link_to "Zaloguj", new_user_session_path
+
+  %p.notice= notice
+  %p.alert= alert
+
+  = yield
+
+
